@@ -72,45 +72,9 @@ function createMap(earthquakes) {
         collapsed: false
     }).addTo(map);
 
-
-//----------------------------------------------------------------------------
-//define legend and position bottom right 
-
-
-
-
-//Last part to change:
-//Legend looks off, doesnt include colors or ranges 
-
 //------------------------------------------------------------------------------
+//Legend Section to be added
 
-    var legend = L.control({
-        position: "bottomright"
-    });
-
-    legend.onAdd = function(map) {
-        var div = L.DomUtil.create("div", "info legend"),
-        grades = [0, 1, 2, 3, 4, 5],
-        labels = [];
-
-    // Loop for legend values
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i ' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-    }
-    return div;
-    };
-    legend.addTo(map);
-}
-
-/*
-
-//-----------------------------------------------------------------------------------
-Legend Section
-
-
-*/
 //-------------------------------------------------------------------------------------------
 //Radius and Magnitude functions for datapoints
 
