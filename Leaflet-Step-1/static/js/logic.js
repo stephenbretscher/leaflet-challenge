@@ -81,16 +81,16 @@ var legend = L.control({
 var legendColor = ["lightblue", "lightgreen", "green", "yellow", "orange", "red" ];
 
 legend.onAdd = function () {
-    legend_mag = [0, 1, 2, 3, 4, 5]
+    legend_depth = [10, 10, 30, 50, 70, 90]
     // add div + title for legend
     var div = L.DomUtil.create("div", "info legend");
-    div.innerHTML = "<h6 class='legend-title'>Magnitude</h6>"
+    div.innerHTML = "<h6 class='legend-title'>Depth</h6>"
 
     // loop to annotate legend with magnitude ranges and corresponding color squares
     for (var i = 0; i < legendColor.length; i++) {
         div.innerHTML +=
             '<id="legend-squares" style="background:' + legendColor[i] + '">' +
-            legend_mag[i] + (legend_mag[i+1] ? '-' + legend_mag[i+1] + '<br>' : '+');
+            legend_depth[i] + (legend_depth[i+1] ? '-' + legend_depth[i+1] + '<br>' : '+');
     }
     return div;
 };
