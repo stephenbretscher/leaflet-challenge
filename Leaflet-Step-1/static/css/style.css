@@ -9,6 +9,7 @@ html {
   height: 100%;
 }
 
+
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
@@ -19,6 +20,13 @@ html {
 }
 
 .legend {
-  line-height: 20px;
-  color: black;
+  background-color: white;
+  padding: 10px 10px;
+  font-size: 11px;
+  border-radius: 1px;
+}
+
+#square {
+  height: 20px;
+  width: 20px;
 }

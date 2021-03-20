@@ -73,14 +73,37 @@ function createMap(earthquakes) {
     }).addTo(map);
 
 //------------------------------------------------------------------------------
-//Legend Section to be added
+//define legend and position bottom right 
+var legend = L.control({
+    position: "bottomright"
+});
+//color list for legend
+var legendColor = ["lightblue", "lightgreen", "green", "yellow", "orange", "red" ];
+
+legend.onAdd = function () {
+    legend_mag = [0, 1, 2, 3, 4, 5]
+    // add div + title for legend
+    var div = L.DomUtil.create("div", "info legend");
+    div.innerHTML = "<h6 class='legend-title'>Magnitude</h6>"
+
+    // loop to annotate legend with magnitude ranges and corresponding color squares
+    for (var i = 0; i < legendColor.length; i++) {
+        div.innerHTML +=
+            '<id="legend-squares" style="background:' + legendColor[i] + '">' +
+            legend_mag[i] + (legend_mag[i+1] ? '-' + legend_mag[i+1] + '<br>' : '+');
+    }
+    return div;
+};
+// Add legend to the map
+legend.addTo(map);
+}
 
 //-------------------------------------------------------------------------------------------
-//Radius and Magnitude functions for datapoints
-
+//Radius for datapoints 
 function getRadius(magnitude) {
-    return magnitude * 20000;
+    return magnitude * 25000;
 };
+
 // define color based on magnitude
 function getColor(magnitude) {
     if (magnitude > 5) {
@@ -94,6 +117,6 @@ function getColor(magnitude) {
     } else if (magnitude > 1) {
         return 'lightgreen'
     } else {
-        return 'blue'
+        return 'lightblue'
     }
 };
